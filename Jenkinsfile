@@ -5,12 +5,9 @@ pipeline {
         nodejs "nodejs-22-6-0"
     }
     stages {
-        stage("Node Version") {
+        stage("Installing Dependencies") {
             steps {
-                sh '''
-                    node -v
-                    npm -v
-                '''
+                sh "npm i --no-audit"
             }
         }
     }
