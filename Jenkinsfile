@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NVD_API_KEY = credentials('2a7f503a-2573-40dd-ba13-a30d2b6bec79')
+        NVD_API_KEY = credentials('nvd-api-key')
     }
 
     tools {
