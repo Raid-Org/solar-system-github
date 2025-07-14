@@ -26,7 +26,7 @@ pipeline {
                 }
                 stage("OWASP Dependency Check") {
                     steps {
-                        dependencyCheck additionalArguments: '--nvdApiKey $NVD_API_KEY --scan ./ --out ./ --format ALL --prettyPrint', odcInstallation: "OWASP-DepCheck-10"
+                        dependencyCheck additionalArguments: '--nvdApiKey $NVD_API_KEY --scan ./ --out ./ --format ALL --prettyPrint --disableAssembly --disableNvdCvssV4', odcInstallation: "OWASP-DepCheck-10"
 
                     }
                 }
