@@ -26,8 +26,13 @@ pipeline {
                 }
                 stage("OWASP Dependency Check") {
                     steps {
-                        dependencyCheck additionalArguments: "--scan ./ --out ./ --format ALL --prettyPrint", odcInstallation: "OWASP-DepCheck-10"
-
+//                         dependencyCheck additionalArguments: "--scan ./ --out ./ --format ALL --prettyPrint", odcInstallation: "OWASP-DepCheck-10"
+                            withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
+                                sh '''
+                                   export NVD_API_KEY=$NVD_API_KEY
+                                   dependency-check.sh --scan ./ --out ./report --format HTML
+                                '''
+                            }
                     }
                 }
             }
