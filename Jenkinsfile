@@ -46,7 +46,7 @@ pipeline {
                         env.MONGO_URI="mongodb+srv://${env.MONGO_USERNAME}:${env.MONGO_PASSWORD}@cluster0.ix4e2py.mongodb.net/superData"
                     }
                     sh 'echo $MONGO_URI'
-                    sh 'MONGO_URI="$MONGO_URI" npm test'
+                    sh 'NODE_OPTIONS="--no-deprecation" MONGO_URI="$MONGO_URI" npm test'
                 }
 
                 junit allowEmptyResults: true, stdioRetention: '', testResults: 'dependency-check-junit.xml'
