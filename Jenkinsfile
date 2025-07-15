@@ -40,6 +40,8 @@ pipeline {
 
         stage("Unit Testing") {
             steps {
+                sh "$MONGO_URI"
+
                 withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     sh "npm test"
                 }
