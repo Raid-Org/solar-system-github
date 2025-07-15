@@ -43,7 +43,7 @@ pipeline {
 
                 withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     script {
-                        env.MONGO_URI=mongodb+srv://${env.MONGO_USERNAME}:${env.MONGO_PASSWORD}@cluster0.ix4e2py.mongodb.net/superData
+                        env.MONGO_URI="mongodb+srv://${env.MONGO_USERNAME}:${env.MONGO_PASSWORD}@cluster0.ix4e2py.mongodb.net/superData"
                     }
                     sh 'echo $MONGO_URI'
                     sh "npm test"
